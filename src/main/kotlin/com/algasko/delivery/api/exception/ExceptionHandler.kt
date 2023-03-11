@@ -1,4 +1,4 @@
-package com.algasko.delivery.controller.api
+package com.algasko.delivery.api.exception
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException

@@ -1,6 +1,6 @@
-package com.algasko.delivery.controller
+package com.algasko.delivery.api
 
-import com.algasko.delivery.controller.api.DeliveryForm
+import com.algasko.delivery.api.form.DeliveryForm
 import com.algasko.delivery.data.entity.Delivery
 import com.algasko.delivery.data.repository.DeliveryRepository
 import com.algasko.delivery.data.repository.UserRepository
@@ -13,8 +13,8 @@ import javax.validation.Valid
 
 // TODO Api Swagger
 @RestController
-@RequestMapping("delivery")
-class DeliveryController(val deliveryRepository: DeliveryRepository, val userRepository: UserRepository) {
+@RequestMapping("/api/delivery")
+class DeliveryApi(val deliveryRepository: DeliveryRepository, val userRepository: UserRepository) {
 
     @Transactional
     @PostMapping(consumes = ["application/json"])

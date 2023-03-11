@@ -2,9 +2,9 @@ package com.algasko.delivery.controller
 
 import com.algasko.delivery.data.entity.Instance
 import com.algasko.delivery.data.repository.InstanceRepository
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Controller
 
-@Component
+@Controller
 class InstanceController(val instanceRepository: InstanceRepository) {
 
     fun getInstance(from: String, to: String? = null, profileName: String? = null): Instance {

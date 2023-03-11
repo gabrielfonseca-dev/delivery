@@ -16,9 +16,7 @@ object Security {
             .anyMatch { r: HandlerHelper.RequestType -> r.identifier == parameterValue })
     }
 
-    fun isTwilioRequest(request: HttpServletRequest): Boolean { return request.servletPath.startsWith("/twilio/webhook") }
-
-    fun isApiRequest(request: HttpServletRequest): Boolean { return request.servletPath.startsWith("/delivery") }
+    fun isApiRequest(request: HttpServletRequest): Boolean { return request.servletPath.startsWith("/api") }
 
     val isUserLoggedIn: Boolean
         get() {

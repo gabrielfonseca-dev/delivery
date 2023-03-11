@@ -1,5 +1,7 @@
-package com.algasko.delivery.controller
+package com.algasko.delivery.api
 
+import com.algasko.delivery.controller.InstanceController
+import com.algasko.delivery.controller.MessageController
 import com.algasko.delivery.data.entity.Instance
 import com.algasko.delivery.data.entity.Message
 import com.algasko.delivery.security.SecurityService
@@ -13,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController
 import com.twilio.rest.api.v2010.account.Message as TwilioMessage
 
 @RestController
-@RequestMapping("/twilio")
-class TwilioClient {
+@RequestMapping("/api/twilio")
+class TwilioApi {
 
     @Autowired
     private lateinit var instanceController: InstanceController
@@ -25,8 +27,8 @@ class TwilioClient {
     @Autowired
     private lateinit var credentialsService: CredentialsService
 
-    @PostMapping(value = ["/webhook"], produces = ["application/xml"])
-    /*fun handle(form: TwiMLForm): String? {
+    @PostMapping(produces = ["application/xml"])
+    /*fun handle(@RequestBody @Valid form: TwiMLForm): String? {
 
         val instance = instanceController.getInstance(form.from!!, form.to, form.profileName)
         val messageList = messageController.listMessages(instance)

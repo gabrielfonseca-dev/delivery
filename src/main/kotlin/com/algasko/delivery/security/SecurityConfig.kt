@@ -1,7 +1,6 @@
 package com.algasko.delivery.security
 
 import com.algasko.delivery.data.repository.UserRepository
-import com.algasko.delivery.security.credentials.CredentialsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -32,15 +31,11 @@ class SecurityConfig : GlobalMethodSecurityConfiguration() {
     @Autowired
     private lateinit var userRepository: UserRepository
 
-    @Autowired
-    private lateinit var credentialsService: CredentialsService
-
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain? {
         http.csrf().disable()
             .authorizeRequests()
             .requestMatchers(Security::isFrameworkInternalRequest).permitAll()
-            .requestMatchers(Security::isTwilioRequest).permitAll()
             .and().authorizeRequests().antMatchers(
                 "/VAADIN/**",
                 "/vaadinServlet/**",

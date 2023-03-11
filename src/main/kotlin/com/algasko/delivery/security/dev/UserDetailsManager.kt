@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Profile
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.provisioning.JdbcUserDetailsManager
 import org.springframework.stereotype.Component
@@ -25,7 +24,8 @@ class UserDetailsManager(dataSource: DataSource) : JdbcUserDetailsManager(dataSo
 
     @Override
     override fun loadUserByUsername(username: String): UserDetails {
-        val user: com.algasko.delivery.data.entity.User = userRepository.findByUsername(username) ?: return User(
+        val user: com.algasko.delivery.data.entity.User = userRepository.findByUsername(username) ?:
+        return org.springframework.security.core.userdetails.User(
             "user",
             "user",
             false,
@@ -34,7 +34,7 @@ class UserDetailsManager(dataSource: DataSource) : JdbcUserDetailsManager(dataSo
             false,
             getAuthorities(roleRepository.findByName("USER")!!)
         )
-        return User(
+        return org.springframework.security.core.userdetails.User(
             user.username,
             user.password,
             user.enabled,

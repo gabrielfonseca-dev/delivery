@@ -1,7 +1,7 @@
 package com.algasko.delivery.view
 
+import com.algasko.delivery.api.TwilioApi
 import com.algasko.delivery.controller.MessageController
-import com.algasko.delivery.controller.TwilioClient
 import com.algasko.delivery.controller.UserController
 import com.algasko.delivery.data.entity.Permission
 import com.algasko.delivery.security.Security
@@ -32,7 +32,7 @@ import java.util.*
 class MainLayout(
     val userController: UserController,
     val messageController: MessageController,
-    val twilioClient: TwilioClient
+    val twilioClient: TwilioApi
 ) : AppLayout() {
 
     private val toggle = DrawerToggle()

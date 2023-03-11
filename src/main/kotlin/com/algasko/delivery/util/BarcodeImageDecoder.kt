@@ -1,4 +1,4 @@
-package com.algasko.delivery.view.util
+package com.algasko.delivery.util
 
 import com.google.zxing.BinaryBitmap
 import com.google.zxing.MultiFormatReader

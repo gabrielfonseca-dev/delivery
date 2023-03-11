@@ -1,7 +1,7 @@
 package com.algasko.delivery.view
 
+import com.algasko.delivery.api.TwilioApi
 import com.algasko.delivery.controller.MessageController
-import com.algasko.delivery.controller.TwilioClient
 import com.algasko.delivery.controller.UserController
 import com.algasko.delivery.data.entity.Instance
 import com.algasko.delivery.data.entity.Message
@@ -25,7 +25,7 @@ import com.vaadin.flow.spring.annotation.SpringComponent
 class ChatComponent(
     val messageController: MessageController,
     val userController: UserController,
-    val twilioClient: TwilioClient
+    val twilioClient: TwilioApi
 ) : Component() {
 
     var chatList: MutableList<ChatInfo> = ArrayList()

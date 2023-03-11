@@ -4,7 +4,7 @@ import com.algasko.delivery.data.entity.Delivery
 import com.algasko.delivery.data.entity.Volume
 import com.algasko.delivery.data.repository.DeliveryRepository
 import com.algasko.delivery.security.SecurityService
-import com.algasko.delivery.view.util.BarcodeImageDecoder
+import com.algasko.delivery.util.BarcodeImageDecoder
 import com.vaadin.flow.component.UI
 import com.vaadin.flow.component.button.Button
 import com.vaadin.flow.component.dialog.Dialog

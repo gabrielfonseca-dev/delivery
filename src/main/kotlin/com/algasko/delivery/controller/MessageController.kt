@@ -4,9 +4,9 @@ import com.algasko.delivery.data.entity.Instance
 import com.algasko.delivery.data.entity.Message
 import com.algasko.delivery.data.repository.MessageRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Controller
 
-@Component
+@Controller
 class MessageController {
 
     @Autowired

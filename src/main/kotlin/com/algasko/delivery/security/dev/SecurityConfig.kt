@@ -32,7 +32,6 @@ class SecurityConfig : GlobalMethodSecurityConfiguration() {
             .and().logout().logoutSuccessUrl("/")
             .and().authorizeRequests()
             .requestMatchers(Security::isFrameworkInternalRequest).permitAll()
-            .requestMatchers(Security::isTwilioRequest).permitAll()
             .requestMatchers(Security::isApiRequest).permitAll()
             .and().authorizeRequests().antMatchers(
                 "/VAADIN/**",

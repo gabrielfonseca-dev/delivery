@@ -1,10 +1,12 @@
-package com.algasko.delivery.controller.api
+package com.algasko.delivery.api.form
 
 import com.algasko.delivery.data.entity.Delivery
 import com.algasko.delivery.data.entity.User
 import com.algasko.delivery.data.entity.Volume
+import org.springframework.web.context.annotation.RequestScope
 import javax.validation.constraints.NotNull
 
+@RequestScope
 class DeliveryForm {
 
     @NotNull

@@ -1,10 +1,10 @@
-package com.algasko.delivery.controller.api
+package com.algasko.delivery.api.form
 
 import com.algasko.delivery.data.entity.Message
 import com.sun.istack.NotNull
 import org.json.JSONArray
 
-class TwiMLForm {
+class TwilioForm {
     var messageSid: String? = null
     var accountSid: String? = null
     var messagingServiceSid: String? = null

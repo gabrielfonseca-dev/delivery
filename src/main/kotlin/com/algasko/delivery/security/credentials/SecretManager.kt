@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment
 import org.springframework.stereotype.Service
 
 @Service
-class SecretManager(var env: Environment) {
+class SecretManager(val env: Environment) {
 
     private val clientBuilder: AWSSecretsManagerClientBuilder = AWSSecretsManagerClientBuilder.standard()
     private val objectMapper: ObjectMapper = ObjectMapper()
@@ -22,30 +22,18 @@ class SecretManager(var env: Environment) {
         val endpoints = env.getProperty("spring.aws.secretsmanager.endpoint")
         val awsRegion = env.getProperty("spring.aws.secretsmanager.region")
         val secretName = env.getProperty("spring.aws.secretsmanager.name")
-
         var getSecretValueResponse: GetSecretValueResult? = null
 
         try {
-
-            val config: AwsClientBuilder.EndpointConfiguration =
-                AwsClientBuilder.EndpointConfiguration(endpoints, awsRegion)
+            val config: AwsClientBuilder.EndpointConfiguration = AwsClientBuilder.EndpointConfiguration(endpoints, awsRegion)
             val getSecretValueRequest: GetSecretValueRequest = GetSecretValueRequest().withSecretId(secretName)
-
             clientBuilder.setEndpointConfiguration(config)
             val client: AWSSecretsManager = clientBuilder.build()
-
             getSecretValueResponse = client.getSecretValue(getSecretValueRequest)
-
-        } catch (e: Exception) {
-            System.err.println("The requested secret $secretName was not found")
-        }
+        } catch (e: Exception) { System.err.println("The requested secret $secretName was not found") }
 
         val secret: String? = getSecretValueResponse?.secretString
-
-        if (secret != null) {
-            secretsJson = objectMapper.readTree(secret)
-        }
-
+        if (secret != null) secretsJson = objectMapper.readTree(secret)
         return secretsJson
 
     }
